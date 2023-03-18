@@ -44,7 +44,7 @@ alias hg='history | grep '
 # nvim start
 alias nv='nvim .' 
 # tmux-sessioniser
-bind '"\C-f": "tmux-sessioniser\n"'
+bind '"\C-f": "tmux-sessionizer\n"'
 
 # end of user defined alias
 
