@@ -43,6 +43,8 @@ alias tk='tmux kill-session -t'
 alias hg='history | grep '
 # nvim start
 alias nv='nvim .' 
+# tmux-sessioniser
+bind '"\C-f": "tmux-sessioniser\n"'
 
 # end of user defined alias
 
