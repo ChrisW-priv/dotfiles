@@ -52,5 +52,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
 export PATH=/usr/local/bin/vim:$PATH
+export PATH=$HOME/.local/scripts/:$PATH
 
