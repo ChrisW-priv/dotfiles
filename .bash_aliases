@@ -35,7 +35,7 @@ alias gc='git commit -m'
 alias ga='git add'
 alias gs='git status'
 # TMUX
-alias ta='tmux a'
+alias ta='tmux a -t'
 alias tn='tmux new -s'
 alias tls='tmux ls'
 alias tk='tmux kill-session -t'
