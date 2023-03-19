@@ -10,6 +10,8 @@ tree
 tmux
 ranger
 gvim
+neovim
+fzf
 zip
 celluloid
 discord
