@@ -9,7 +9,7 @@ make
 tree
 tmux
 ranger
-vim
+gvim
 zip
 celluloid
 discord
