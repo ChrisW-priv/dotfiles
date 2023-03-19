@@ -47,6 +47,8 @@ alias nv='nvim .'
 bind '"\C-f": "tmux-sessionizer\n"'
 # python venv module 
 alias venv='source venv/bin/activate'
+# tree ignore the venv directory 
+alias tree='tree -I venv'
 
 # end of user defined alias
 
