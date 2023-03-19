@@ -45,6 +45,8 @@ alias hg='history | grep '
 alias nv='nvim .' 
 # tmux-sessioniser
 bind '"\C-f": "tmux-sessionizer\n"'
+# python venv module 
+alias venv='source venv/bin/activate'
 
 # end of user defined alias
 
