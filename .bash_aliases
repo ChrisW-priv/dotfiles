@@ -48,7 +48,7 @@ bind '"\C-f": "tmux-sessionizer\n"'
 # python venv module 
 alias venv='source venv/bin/activate'
 # tree ignore the venv directory 
-alias tree='tree -I venv'
+alias tree="tree -I 'venv|__pycache__'"
 
 # end of user defined alias
 
