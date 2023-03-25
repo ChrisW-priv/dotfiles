@@ -10,5 +10,9 @@ vim +'PlugInstall'
 # Install python modules
 sudo pip install $(cat python_packages)
 
+# add packer to neovim
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
 # Config github cli
 gh auth login

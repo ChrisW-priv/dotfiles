@@ -19,4 +19,5 @@ obsidian
 pandoc
 texlive-fontsextra
 xsel
-
+nodejs
+npm
