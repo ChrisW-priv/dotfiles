@@ -21,7 +21,6 @@ alias l='ls -CF'
 alias python=python3
 alias py=python3
 # present visual
-alias folder='gio open .'
 alias open='gio open'
 # clear screen
 alias cl=clear
@@ -48,9 +47,9 @@ bind '"\C-f": "tmux-sessionizer\n"'
 # python venv module 
 alias venv='source venv/bin/activate'
 # tree ignore the venv directory 
-alias tree="tree -I 'venv|__pycache__'"
-
+alias tree="tree -I 'venv|__pycache__|.git'"
 # end of user defined alias
+
 
 alias ls='ls --color=auto'
 

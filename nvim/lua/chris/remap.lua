@@ -20,21 +20,43 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+vim.keymap.set("n", "<C-f>", "<cmd> !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
-
+-- rename for entire file
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- make file executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>");
-vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
+vim.keymap.set("i", "{<CR>", "{<CR>}<CR><Esc>kO")
+vim.keymap.set("i", "{{", "{{  }}<Left><Left><Left>")
+vim.keymap.set("i", "{%", "{%  %}<Left><Left><Left>")
 
-vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
-end)
+vim.keymap.set("i", "<A-j>", "<Down>")
+vim.keymap.set("i", "<A-h>", "<Left>")
+vim.keymap.set("i", "<A-k>", "<Up>")
+vim.keymap.set("i", "<A-l>", "<Right>")
 
+vim.keymap.set({"n", "v"}, "<C-_>", ":CommentToggle<CR>")
+
+vim.keymap.set({"n", "v", "i"}, "<C-s>", "<Esc>:w<CR>")
+
+vim.api.nvim_exec([[
+  autocmd FileType python noremap <buffer> <F9> <Esc>:w<CR>:!python3 %<CR>
+]], false)
+
+vim.api.nvim_exec([[
+  autocmd FileType markdown noremap <buffer> <F9> <Esc>:w<CR>:!pandoc % -o %.pdf<CR>
+]], false)
+
+vim.api.nvim_exec([[
+  autocmd FileType plaintex,tex noremap <buffer> <F9> <Esc>:w<CR>:!pdflatex -interaction=nonstopmode %<CR>
+]], false)
+
+vim.api.nvim_exec([[
+  autocmd FileType javascript,typescript noremap <buffer> <F9> <Esc>:w<CR>:!node %<CR>
+]], false)
+
+vim.api.nvim_exec([[
+  autocmd FileType go noremap <buffer> <F9> <Esc>:w<CR>:!go run %<CR>
+]], false)

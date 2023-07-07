@@ -54,5 +54,6 @@ if ! shopt -oq posix; then
 fi
 
 export PATH=/usr/local/bin/vim:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.local/scripts/:$PATH
 
