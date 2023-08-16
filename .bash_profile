@@ -1,8 +1,8 @@
-# Source outside files 
+# Source outside files
 files_to_source=("$HOME/.bash_aliases" )
 
 for file_to_source in ${files_to_source[@]}
-do 
+do
     if [ -f "$file_to_source" ];
     then
         source "$file_to_source"
@@ -31,6 +31,11 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+# set keyboard to be colemak with esc<=>caps
+setxkbmap pl -variant colemak
+xmodmap -e "clear Lock" -e "keycode 66 = Escape"
+xmodmap -e "clear Lock" -e "keycode 9 = Caps_Lock"
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -42,9 +47,7 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
+# enable programmable completion features 
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -56,4 +59,3 @@ fi
 export PATH=/usr/local/bin/vim:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.local/scripts/:$PATH
-
