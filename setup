@@ -3,16 +3,28 @@
 # install packages with pacman
 sudo pacman -S $(cat packages_to_install)
 
+# Install python modules
+sudo pip install $(cat python_packages)
+
+# copy dotfiles from repo to correct places
+cp dotfiles/.bashrc .
+cp dotfiles/.bash_profile .
+cp dotfiles/.vimrc .
+cp dotfiles/.tmux.conf .
+cp dotfiles/.local/scripts/tmux-sessionizer ./local/scripts/
+
 # Configure vim plugins
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +'PlugInstall'
-
-# Install python modules
-sudo pip install $(cat python_packages)
 
 # add packer to neovim
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
+cp dotfiles/nvim ./config/nvim -r
+
 # Config github cli
 gh auth login
+
+# clone passwords from github
+git clone https://github.com/ChrisW-priv/password_store.git 
