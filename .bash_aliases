@@ -20,6 +20,7 @@ alias l='ls -CF'
 # python
 alias python=python3
 alias py=python3
+alias activate='source ~/env/glob/bin/activate'
 # present visual
 alias open='gio open'
 # clear screen
@@ -49,7 +50,6 @@ alias venv='source venv/bin/activate'
 # tree ignore the venv directory 
 alias tree="tree -I 'venv|__pycache__|.git'"
 # end of user defined alias
-
 
 alias ls='ls --color=auto'
 
