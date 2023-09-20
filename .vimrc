@@ -28,11 +28,9 @@ nmap <leader>pv :Ex<CR>
 
 " compatibility with basic non vim editor shortcuts:
 nnoremap <C-n> <Esc>:tabnew<CR>i
-noremap <C-s> <Esc>:w<CR>i
+inoremap <C-s> <Esc>:w<CR>
 inoremap <C-a> <Esc>ggvG<CR>i
 inoremap <C-z> <Esc>:u<CR>i
-inoremap <C-c> <Esc>"+y<CR>i
-inoremap <C-v> <Esc>"+p<CR>i
 
 " clipboard with the outside
 noremap <Leader>y "+y
