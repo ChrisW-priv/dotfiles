@@ -1,8 +1,11 @@
 set nocompatible
 set wildmenu
 
+" leader definition here (space)
+let mapleader=" "
+
 set number relativenumber 
-set scrolloff=10
+set scrolloff=8
 set nowrap
 set hlsearch
 set noswapfile
@@ -13,10 +16,6 @@ noremap <C-w>v <Esc>:vsplit<CR>
 noremap <C-w>h <Esc>:split<CR>
 
 set hidden
-nnoremap t[ :tabp<CR>
-nnoremap t] :tabn<CR>
-nnoremap b[ :bprevious<CR>
-nnoremap b] :bnext<CR>
 
 syntax off
 "" default colorschceme when only defaults are available 
@@ -24,18 +23,12 @@ syntax off
 colorscheme gruvbox
 set bg=dark
 
-" map kj to esc (capslock doesn't work for me :-( )
-imap kj <Esc>
-
-" leader definition here (space)
-let mapleader=" "
-
 " open the project directory
 nmap <leader>pv :Ex<CR>
 
 " compatibility with basic non vim editor shortcuts:
 nnoremap <C-n> <Esc>:tabnew<CR>i
-inoremap <C-s> <Esc>:w<CR>i
+noremap <C-s> <Esc>:w<CR>i
 inoremap <C-a> <Esc>ggvG<CR>i
 inoremap <C-z> <Esc>:u<CR>i
 inoremap <C-c> <Esc>"+y<CR>i
@@ -65,15 +58,8 @@ imap <S-Up> <Esc>:m .-2<CR>==gi
 vmap <S-j> :m '>+1<CR>gv=gv
 vmap <S-k> :m '<-2<CR>gv=gv
 
-" match the parenthesis like {[( or quotes "'`
-inoremap ( ()<Left>
-inoremap [ []<Left>
-inoremap { {}<Left>
+" match the parenthesis { with equal spacing
 inoremap {<space> {  }<Left><Left>
-inoremap ' ''<Left>
-inoremap " ""<Left>
-inoremap ` ``<Left>
-
 " if want to create the function body its more convinient to have it autocomplete to 
 inoremap {<CR> {<CR>}<CR><Esc>kO
 
