@@ -21,8 +21,10 @@ fi
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
 
 # don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
 HISTCONTROL=ignoreboth
+
+# tmux-sessioniser
+bind '"\C-f": "tmux-sessionizer\n"'
 
 # append to the history file, don't overwrite it
 shopt -s histappend
