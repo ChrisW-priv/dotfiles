@@ -33,11 +33,6 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# set keyboard to be colemak with esc<=>caps
-setxkbmap pl -variant colemak
-xmodmap -e "clear Lock" -e "keycode 66 = Escape"
-xmodmap -e "clear Lock" -e "keycode 9 = Caps_Lock"
-
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
