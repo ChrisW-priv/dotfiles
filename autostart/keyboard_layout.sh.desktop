@@ -1,7 +1,0 @@
-[Desktop Entry]
-Exec=~/dotfiles/keyboard_layout.sh
-Icon=dialog-scripts
-Name=keyboard_layout.sh
-Path=
-Type=Application
-X-KDE-AutostartScript=true
