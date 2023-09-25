@@ -3,6 +3,9 @@
 # install packages with pacman
 sudo pacman -S $(cat packages_to_install)
 
+# create global env
+python3 -m venv ~/env/glob
+
 # Install python modules
 sudo pip install $(cat python_packages)
 
@@ -19,8 +22,6 @@ vim +'PlugInstall'
 # add packer to neovim
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
-cp dotfiles/nvim ./config/nvim -r
 
 # Config github cli
 gh auth login
