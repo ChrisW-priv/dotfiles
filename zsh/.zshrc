@@ -40,17 +40,17 @@ SAVEHIST=2000
 bindkey -s '^F' 'tmux-sessionizer\n'
 bindkey -s '^H' 'history | fzf\n'
 
-function zle-keymap-select () {
-	case $KEYMAP in 
-		vicmd) echo -ne '\e[1 q' ;; 		# block
-		viins|main) echo -ne '\e[5 q' ;; 	# beam
-	esac
-}
-
-zle -N zle-keymap-select
-zle-line-init() {
-	zle -K viins
-	echo -ne "\e[5 q"
-}
-zle -N zle-line-init
-
+# function zle-keymap-select () {
+# 	case $KEYMAP in 
+# 		vicmd) echo -ne '\e[1 q' ;; 		# block
+# 		viins|main) echo -ne '\e[5 q' ;; 	# beam
+# 	esac
+# }
+# 
+# zle -N zle-keymap-select
+# zle-line-init() {
+# 	zle -K viins
+# 	echo -ne "\e[5 q"
+# }
+# zle -N zle-line-init
+# 
