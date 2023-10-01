@@ -29,3 +29,11 @@ git clone https://github.com/ChrisW-priv/password_store.git
 git clone https://github.com/stuarthayhurst/argon-grub-theme.git
 # execute install to customise grub
 sudo ./argon-grub-theme/install.sh --install --resolution custom --background Grey
+
+# base rules for firewall
+sudo ufw limit 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw enable
