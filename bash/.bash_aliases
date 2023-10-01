@@ -44,4 +44,5 @@ alias egrep='egrep --color=auto'
 
 alias flatseal='flatpak run com.github.tchx84.Flatseal'
 alias discord='flatpak run com.discordapp.Discord'
-
+alias obsidian='flatpak run md.obsidian.Obsidian'
+alias firefox='flatpak run org.mozilla.firefox'
