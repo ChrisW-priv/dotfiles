@@ -201,4 +201,4 @@ client.background       #ffffff
 
 # Autostart
 exec_always nitrogen --restore
-exec_always ~/.keyboard_layout.sh
+exec_always ~/keyboard_layout.sh

@@ -3,7 +3,7 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = { 
 	  "c", "cpp", "make", "cmake",
 	  "lua", "vim", 
-	  "help", "query",
+	  "query",
 	  "python"
   },
 

@@ -15,6 +15,11 @@ stow $(ls -d */ | awk -F/ '{print $1}')
 # install flatpacks that specially need to be isolated from rest of the system
 flatpak install flathub $(cat flatpacks_to_install)
 
+# Install tpm (tmux plugin manager)
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# Then, in tmux you will need to reload config and 
+# press <prefix>+I to install all plugins
+
 # Configure vim plugins
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +'PlugInstall'
