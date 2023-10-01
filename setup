@@ -30,6 +30,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 
 # Config github cli
 gh auth login
+gh auth setup-git
 
 # clone passwords from github
 git clone https://github.com/ChrisW-priv/password_store.git 
