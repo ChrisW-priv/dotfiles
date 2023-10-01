@@ -27,6 +27,8 @@ gh auth login
 
 # clone passwords from github
 git clone https://github.com/ChrisW-priv/password_store.git 
+# clone Personal Vault
+git clone https://github.com/ChrisW-priv/PersonalVault.git
 
 # clone repo to customise grub
 git clone https://github.com/stuarthayhurst/argon-grub-theme.git
