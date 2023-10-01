@@ -21,3 +21,8 @@ gh auth login
 
 # clone passwords from github
 git clone https://github.com/ChrisW-priv/password_store.git 
+
+# clone repo to customise grub
+git clone https://github.com/stuarthayhurst/argon-grub-theme.git
+# execute install to customise grub
+sudo ./argon-grub-theme/install.sh --install --resolution custom --background Grey
