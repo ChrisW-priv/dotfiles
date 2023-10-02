@@ -1,6 +1,6 @@
 source ~/.bash_aliases
 
-PS1='%F{green}%n@%m%F{blue}:%F{white}%~'$'\n'$' > '
+PS1='%F{green}%n@%m%F{white}:%F{blue}%~'$'\n'$'%F{white} > '
 bindkey -v
 
 setopt nomatch extendedglob
