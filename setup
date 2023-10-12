@@ -12,6 +12,7 @@ python3 -m venv ~/env/glob
 source ~/env/glob/bin/activate
 # install python modules
 pip install $(cat python_packages)
+deactivate
 
 # stow all config files
 stow $(ls -d */ | awk -F/ '{print $1}')
