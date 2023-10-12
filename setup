@@ -1,5 +1,61 @@
 #!/bin/bash
 
+# First: Connect to the internet.
+# This step is left out because one needs to install the script first from the cloud
+#
+# Second: Disc partition
+# This is also left out as is because often I want a dualboot system and can have multiple
+# disks so in the end it will come down to specific machine 
+# commands for it are:
+# cfdisk 
+# mkfs.ext4 /dev/root_partition
+# mkfs.fat -F 32 /dev/efi_system_partition
+# mkswap /dev/swap_partition
+# mount /dev/root_partition /mnt
+# mkdir /mnt/boot/efi
+# mount /dev/efi_system_partition /mnt/boot/efi
+# swapon /dev/swap_partition
+
+# download basic packages
+pacstrap /mnt base linux linux-firmware sof-firmware base-devel grub efibootmgr networkmanager vim
+
+# save the file system
+genfstab /mnt > /mnt/etc/fstab
+
+# configure grub
+grub-install /dev/disk
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# change to arch root
+arch-chroot /mnt
+
+# set timezone
+ln -sf /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
+hwclock --systohc
+
+# set Localization
+vim /etc/locale.gen
+locale-gen
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+# set keyboard to polish colemak
+echo "KEYMAP=pl-cm" > /etc/vconsole.conf
+# set hostname
+echo "new_machine" > /etc/hostname
+
+systemctl enable NetworkManager
+
+# add chris user and add to wheel group
+useradd -m -G wheel -s /bin/bash chris
+visudo
+
+su chris
+
+# Allow user to switch default pacman download to pararell
+sudo vim /etc/pacman.conf
+
+sudo pacman -S sddm i3 alacritty
+sudo systemctl enable sddm
+
 cd dotfiles
 
 # install packages with pacman
@@ -35,6 +91,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Configure vim plugins
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +'PlugInstall' --headless
+vim +'set clipboard=unnamedplus' --headless
 
 # add packer to neovim
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
@@ -68,6 +125,10 @@ yay sddm-sugar-light
 # Config github cli
 gh auth login
 gh auth setup-git
+
+exit
+umount -a
+reboot
 
 # Config nitrogen
 nitrogen
