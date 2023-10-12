@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd dotfiles
+
 # install packages with pacman
 sudo pacman -S $(cat packages_to_install)
 
@@ -11,38 +13,10 @@ source ~/env/glob/bin/activate
 sudo pip install $(cat python_packages)
 
 # stow all config files
-cd dotfiles
 stow $(ls -d */ | awk -F/ '{print $1}')
-cd ..
 
 # install flatpacks that specially need to be isolated from rest of the system
 flatpak install flathub $(cat flatpacks_to_install)
-
-# Install tpm (tmux plugin manager)
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-# Then, in tmux you will need to reload config and 
-# press <prefix>+I to install all plugins or run script from below
-~/.tmux/plugins/tpm/bin/install_plugins
-
-# Configure vim plugins
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-vim +'PlugInstall'
-
-# add packer to neovim
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-# Source packer and sync it
-nvim -c 'source ~/.config/nvim/lua/chris/packer.lua | PackerSync' -q --headless
-
-# clone passwords from github
-git clone https://github.com/ChrisW-priv/password_store.git 
-# clone Personal Vault
-git clone https://github.com/ChrisW-priv/PersonalVault.git
-
-# clone repo to customise grub
-git clone https://github.com/stuarthayhurst/argon-grub-theme.git
-# execute install to customise grub
-sudo ./install.sh --install --resolution custom --background Grey
 
 # base rules for firewall
 sudo ufw limit 22/tcp
@@ -52,11 +26,44 @@ sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw enable
 
+# Install tpm (tmux plugin manager)
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# Then, in tmux you will need to reload config and 
+# press <prefix>+I to install all plugins or run script from below
+~/.tmux/plugins/tpm/bin/install_plugins
+
+# Configure vim plugins
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim +'PlugInstall' --headless
+
+# add packer to neovim
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+# Source packer and sync it
+nvim +'source ~/.config/nvim/lua/chris/packer.lua | PackerSync' -q --headless
+
+cd ..
+# clone passwords from github
+git clone https://github.com/ChrisW-priv/password_store.git 
+# clone Personal Vault
+git clone https://github.com/ChrisW-priv/PersonalVault.git
+
+# clone repo to customise grub
+git clone https://github.com/stuarthayhurst/argon-grub-theme.git
+# change dir into it
+cd argon-grub-theme
+# execute install to customise grub
+sudo ./install.sh --install --resolution custom --background Grey
+cd ..
+
 # setup yay as aur helper
 git clone https://aur.archlinux.org/yay-git.git
 cd yay-git/
 makepkg -si
 cd .. && sudo rm -r yay-git
+
+# Config sddm
+yay sddm-sugar-light
 
 # Config github cli
 gh auth login
@@ -64,6 +71,3 @@ gh auth setup-git
 
 # Config nitrogen
 nitrogen
-
-# Config sddm
-yay sddm-sugar-light
