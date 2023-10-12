@@ -121,14 +121,15 @@ cd .. && sudo rm -r yay-git
 
 # Config sddm
 yay sddm-sugar-light
-
-# Config github cli
-gh auth login
-gh auth setup-git
+sudo vim /usr/lib/sddm/sddm.conf.d/default.conf
 
 exit
 umount -a
 reboot
+
+# Config github cli
+gh auth login
+gh auth setup-git
 
 # Config nitrogen
 nitrogen
