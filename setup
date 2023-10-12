@@ -5,12 +5,15 @@ sudo pacman -S $(cat packages_to_install)
 
 # create global env
 python3 -m venv ~/env/glob
-
-# Install python modules
+# enter env
+source ~/env/glob/bin/activate
+# install python modules
 sudo pip install $(cat python_packages)
 
 # stow all config files
+cd dotfiles
 stow $(ls -d */ | awk -F/ '{print $1}')
+cd ..
 
 # install flatpacks that specially need to be isolated from rest of the system
 flatpak install flathub $(cat flatpacks_to_install)
@@ -18,7 +21,8 @@ flatpak install flathub $(cat flatpacks_to_install)
 # Install tpm (tmux plugin manager)
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Then, in tmux you will need to reload config and 
-# press <prefix>+I to install all plugins
+# press <prefix>+I to install all plugins or run script from below
+~/.tmux/plugins/tpm/bin/install_plugins
 
 # Configure vim plugins
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -27,10 +31,8 @@ vim +'PlugInstall'
 # add packer to neovim
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
-# Config github cli
-gh auth login
-gh auth setup-git
+# Source packer and sync it
+nvim -c 'source ~/.config/nvim/lua/chris/packer.lua | PackerSync' -q --headless
 
 # clone passwords from github
 git clone https://github.com/ChrisW-priv/password_store.git 
@@ -55,3 +57,13 @@ git clone https://aur.archlinux.org/yay-git.git
 cd yay-git/
 makepkg -si
 cd .. && sudo rm -r yay-git
+
+# Config github cli
+gh auth login
+gh auth setup-git
+
+# Config nitrogen
+nitrogen
+
+# Config sddm
+yay sddm-sugar-light
