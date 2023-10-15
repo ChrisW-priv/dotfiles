@@ -5,7 +5,9 @@ vim.keymap.set('n', '<leader>pf', function ()
         file_ignore_patterns={
             "venv/*",
             "__pycache__/*",
-            "ipynb_checkpoints/*"
+            "ipynb_checkpoints/*",
+            "node_packages/*",
+            ".git/*"
         } })
 end, {})
 
