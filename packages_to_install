@@ -14,6 +14,7 @@ neovim
 fzf
 zip
 pandoc
+texlive
 texlive-fontsextra
 xsel
 xclip
