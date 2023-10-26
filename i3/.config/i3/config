@@ -164,3 +164,4 @@ default_border pixel 1
 # Autostart
 exec_always nitrogen --restore
 exec_always ~/keyboard_layout.sh
+exec --no-startup-id picom --config ~/.config/picom.conf
