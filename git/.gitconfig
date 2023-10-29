@@ -7,3 +7,5 @@
 [user]
 	email = chris.watras@gmail.com
 	name = ChrisW-priv
+[init]
+	defaultBranch = main
