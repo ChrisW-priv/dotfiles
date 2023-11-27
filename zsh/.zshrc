@@ -32,13 +32,16 @@ zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
-HISTFILE=~/.zhistory
 setopt APPEND_HISTORY
-HISTSIZE=2000
-SAVEHIST=2000
+export HISTFILE=~/.zhistory
+export HISTCONTROL=ignoreboth
+export HISTSIZE=2000
+export SAVEHIST=2000
 
 bindkey -s '^F' 'tmux-sessionizer\n'
 bindkey -s '^H' 'history | fzf\n'
+
+eval $(keychain --eval --agents ssh --quick --quiet)
 
 # function zle-keymap-select () {
 # 	case $KEYMAP in 
