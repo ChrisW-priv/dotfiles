@@ -6,6 +6,9 @@ cd dotfiles
 # install packages with pacman
 sudo pacman -S $(cat packages_to_install)
 
+# make git remember the credentials
+git config --global credential.helper cache
+
 # create global env
 python3 -m venv ~/env/glob
 # enter env
