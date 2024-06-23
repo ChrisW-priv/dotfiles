@@ -3,6 +3,8 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
+    "black", "pylsp",
+    "ast_grep",
 })
 
 -- Fix Undefined global 'vim'
