@@ -41,22 +41,3 @@ vim.keymap.set({"n", "v"}, "<C-_>", ":CommentToggle<CR>")
 
 vim.keymap.set({"n", "v", "i"}, "<C-s>", "<Esc>:w<CR>")
 
-vim.api.nvim_exec([[
-  autocmd FileType python noremap <buffer> <F9> <Esc>:w<CR>:!python3 %<CR>
-]], false)
-
-vim.api.nvim_exec([[
-  autocmd FileType markdown noremap <buffer> <F9> <Esc>:w<CR>:!pandoc % -o %.pdf<CR>
-]], false)
-
-vim.api.nvim_exec([[
-  autocmd FileType plaintex,tex noremap <buffer> <F9> <Esc>:w<CR>:!pdflatex -interaction=nonstopmode %<CR>
-]], false)
-
-vim.api.nvim_exec([[
-  autocmd FileType javascript,typescript noremap <buffer> <F9> <Esc>:w<CR>:!node %<CR>
-]], false)
-
-vim.api.nvim_exec([[
-  autocmd FileType go noremap <buffer> <F9> <Esc>:w<CR>:!go run %<CR>
-]], false)
