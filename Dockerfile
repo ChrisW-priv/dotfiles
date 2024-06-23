@@ -8,6 +8,8 @@ run pacman -S\
     zsh\
     tmux\
     neovim\
+    fzf\
+    ripgrep\
     git\
     github-cli\
     gcc\
@@ -16,18 +18,18 @@ run pacman -S\
     xclip\
     --noconfirm
 
-env XDG_CONFIG_HOME=/home/chris/.config/
-env XDG_DATA_HOME=/home/chris/.config/
-env ZDOTDIR=/home/chris/.config/zsh/
-env HOME=/home/chris/
+env HOME=/home/chris
+env XDG_CONFIG_HOME=${HOME}/.config
+env XDG_DATA_HOME=${HOME}/.local/share
+env ZDOTDIR=${XDG_CONFIG_HOME}/zsh
 
-workdir /home/chris
+workdir ${HOME}
 
-copy nvim/.config/nvim/after /home/chris/.config/nvim/after
-copy nvim/.config/nvim/lua /home/chris/.config/nvim/lua
-copy nvim/.config/nvim/init.lua /home/chris/.config/nvim/
+copy nvim/.config/nvim/after ${XDG_CONFIG_HOME}/nvim/after
+copy nvim/.config/nvim/lua ${XDG_CONFIG_HOME}/nvim/lua
+copy nvim/.config/nvim/init.lua ${XDG_CONFIG_HOME}/nvim/
 
-copy zsh/.zshrc .config/zsh/
+copy zsh/.zshrc ${ZDOTDIR}/
 copy tmux/.tmux.conf .
 copy ./git/.gitconfig .
 copy ./bash/.bash_aliases .
