@@ -41,3 +41,6 @@ vim.keymap.set({"n", "v"}, "<C-_>", ":CommentToggle<CR>")
 
 vim.keymap.set({"n", "v", "i"}, "<C-s>", "<Esc>:w<CR>")
 
+-- paste image from clip
+vim.keymap.set("n", "<leader>v", "<cmd>PasteImage<cr>")
+

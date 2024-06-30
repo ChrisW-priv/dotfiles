@@ -66,6 +66,22 @@ return require('packer').startup(function(use)
             require('dap-python').setup('python')
         end
     }
+    -- Images
+    use {
+        '3rd/image.nvim',
+        dependencies={
+            'vhyrro/luarocks.nvim',
+        }
+    }
+    use {
+      "vhyrro/luarocks.nvim",
+      priority = 1001,
+      opts = { 
+        rocks = { "magick" },
+      },
+    }
+
+    -- use { "HakonHarnes/img-clip.nvim", }
 
     -- Treesitter
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
