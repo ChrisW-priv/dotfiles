@@ -44,10 +44,10 @@ require("dapui").setup({
         size = 40
       }, {
         elements = { {
-            id = "watches",
+            id = "console",
             size = 0.5
           }, {
-            id = "console",
+            id = "watches",
             size = 0.5
           } },
         position = "bottom",
@@ -81,6 +81,7 @@ dap.configurations.python = {
         request = 'launch',
         name = "Launch file",
         program = "${file}", -- This will run the current file
+        console = 'integratedTerminal',
         pythonPath = function()
             -- Use the Python interpreter from the virtual environment created by Poetry
             local cwd = vim.fn.getcwd()
