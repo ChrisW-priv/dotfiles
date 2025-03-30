@@ -27,7 +27,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 bindsym XF86MonBrightnessUp exec --no-startup-id backlight_control +5
 bindsym XF86MonBrightnessDown exec --no-startup-id backlight_control -5
-bindsym Print exec --no-startup-id maim --select ~/Downloads/screenshot$(date -u +%Y-%m-%dT%H-%M).png
+bindsym Print exec --no-startup-id maim --select | xclip -selection clipboard -target image/png
 # if media keys are not working:
 bindsym $mod+Shift+F1 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym $mod+Shift+F2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
@@ -101,14 +101,15 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-# switch to workspace
-bindsym $mod+1 workspace $ws1; exec --no-startup-id ~/.config/i3/run_firefox_if_not_running
-bindsym $mod+2 workspace $ws2
+# switch to workspace and run respective programs
+
+bindsym $mod+1 workspace $ws1; exec --no-startup-id "~/.config/i3/run_program_if_not_running.sh firefox"
+bindsym $mod+2 workspace $ws2; exec --no-startup-id "~/.config/i3/run_program_if_not_running.sh $terminal"
 bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
+bindsym $mod+4 workspace $ws4; exec --no-startup-id "~/.config/i3/run_program_if_not_running.sh pycharm"
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
+bindsym $mod+7 workspace $ws7; exec --no-startup-id xdg-open "obsidian://open?vault=PersonalVault"
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
@@ -168,8 +169,6 @@ default_border pixel 1
 
 # Autostart
 exec_always nitrogen --restore
-exec_always ~/keyboard_layout.sh
 exec_always picom --config ~/.config/picom.conf
 exec_always "eval $(ssh-agent)"
 exec_always "ssh-add"
-

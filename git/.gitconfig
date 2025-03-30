@@ -1,11 +1,9 @@
-[credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
-[user]
-	email = chris.watras@gmail.com
-	name = ChrisW-priv
-[init]
-	defaultBranch = main
+[includeIf "gitdir:~/projects/"]
+    path = ~/projects/.gitconfig
+
+[includeIf "gitdir:~/work/axpl/"]
+    path = ~/work/axpl/.gitconfig
+
+[includeIf "gitdir:~/work/priv_gitlab/"]
+    path = ~/work/priv_gitlab/.gitconfig
+
